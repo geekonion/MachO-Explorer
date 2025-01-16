@@ -25,7 +25,7 @@ Mach-O Explorer should deploy back to OS X 10.11 (and possibly further) but is *
 ***Use a recursive git clone***.
 
 ```
-git clone --recursive https://github.com/DeVaukz/MachO-Explorer
+git clone --recursive https://github.com/geekonion/MachO-Explorer.git
 ```
 
 Open the `MachOExplorer.xcodeproj` file, select the `MachOExplorer` target and click Run.

@@ -3,7 +3,7 @@
 	url = https://github.com/DeVaukz/xcconfigs.git
 [submodule "External/MachO-Kit"]
 	path = External/MachO-Kit
-	url = https://github.com/DeVaukz/MachO-Kit.git
+	url = https://github.com/geekonion/MachO-Kit.git
 [submodule "External/WAYWindow"]
 	path = External/WAYWindow
 	url = https://github.com/weAreYeah/WAYWindow.git
