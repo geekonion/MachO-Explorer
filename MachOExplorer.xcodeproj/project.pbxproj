@@ -641,6 +641,7 @@
 			baseConfigurationReference = D05AD72E1C08EAFB00D832C7 /* macOS-Application.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = "Resources/MachOExplorer-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = net.devaukz.macho.explorer;
@@ -654,6 +655,7 @@
 			baseConfigurationReference = D05AD72E1C08EAFB00D832C7 /* macOS-Application.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = "Resources/MachOExplorer-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = net.devaukz.macho.explorer;

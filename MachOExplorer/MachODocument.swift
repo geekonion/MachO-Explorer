@@ -42,12 +42,13 @@ class MachODocument: NSDocument
 extension MachODocument
 {
     override func read(from url: URL, ofType typeName: String) throws {
-        let memoryMap = try MKMemoryMap.init(contentsOfFile: url)
         
         // Try initializing a dyld shared cache
         do {
-            self.rootNode = try MKSharedCache(flags: .fromSourceFile, atAddress: 0, inMapping: memoryMap)
-            return
+            if let rootNode = try? MKSharedCache(flags: .fromSourceFile, url: url) {
+                self.rootNode = rootNode
+                return
+            }
         } catch let error as NSError {
             // If MK_EINVAL is returned, the file is not a shared cache.
             if mk_error_t(rawValue: UInt32(error.code)) != MK_EINVAL {
@@ -55,6 +56,7 @@ extension MachODocument
             }
         }
             
+        let memoryMap = try MKMemoryMap.init(contentsOfFile: url)
         // Try initializing a FAT binary
         do {
             self.rootNode = try MKFatBinary(memoryMap: memoryMap)
