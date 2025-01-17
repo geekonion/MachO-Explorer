@@ -109,10 +109,10 @@ extension MachODocumentWindowController
                 tabViewController.selectedTabViewItemIndex = 0
             }
             
-            self.displayModeSelector.layoutSubtreeIfNeeded()
+//            self.displayModeSelector.layoutSubtreeIfNeeded()
             self.displayModeSelector.sizeToFit()
-            self.displayModeSelectorItem.maxSize = NSSize(width: self.displayModeSelector.frame.size.width, height: self.displayModeSelectorItem.maxSize.height)
-            self.displayModeSelectorItem.minSize = NSSize(width: 50, height: self.displayModeSelectorItem.minSize.height)
+//            self.displayModeSelectorItem.maxSize = NSSize(width: self.displayModeSelector.frame.size.width, height: self.displayModeSelectorItem.maxSize.height)
+//            self.displayModeSelectorItem.minSize = NSSize(width: 50, height: self.displayModeSelectorItem.minSize.height)
         }
         else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)

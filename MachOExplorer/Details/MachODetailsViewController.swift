@@ -116,10 +116,10 @@ extension MachODetailsViewController
                 let row = MachODetailsViewController.Row()
                 
                 if let contextAddress = detailNode.detail_address(mode: .contextAddress) {
-                    row.rawAddress = contextAddress as! mk_vm_address_t
+                    row.rawAddress = contextAddress as? mk_vm_address_t
                 }
                 if let vmAddress = detailNode.detail_address(mode: .vmAddress) {
-                    row.rvaAddress = vmAddress as! mk_vm_address_t
+                    row.rvaAddress = vmAddress as? mk_vm_address_t
                 }
                 
                 if var data = detailNode.detail_data {
