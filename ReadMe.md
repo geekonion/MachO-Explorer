@@ -6,6 +6,8 @@ Mach-O Explorer is a graphical Mach-O viewer for macOS.  It aims to provide an i
 
 ![Screenshot](https://raw.githubusercontent.com/DeVaukz/MachO-Explorer/master/.github/hero.png)
 
+![DSC](Media/DSC.png)
+
 Mach-O Explorer should deploy back to OS X 10.11 (and possibly further) but is *currently* only being actively tested on macOS 10.14.
 
 ### Limitations
