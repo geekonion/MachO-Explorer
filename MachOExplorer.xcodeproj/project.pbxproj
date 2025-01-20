@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		013ACD282D3DF64900A38E4B /* MachoOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013ACD272D3DF64900A38E4B /* MachoOutlineView.swift */; };
 		D03AFA1F1E5F699B00C60363 /* MachODetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03AFA1D1E5F699B00C60363 /* MachODetailsViewController.swift */; };
 		D03AFA201E5F699B00C60363 /* MachODetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D03AFA1E1E5F699B00C60363 /* MachODetailsViewController.xib */; };
 		D03CD1501E4F903600D76CFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03CD14F1E4F903600D76CFE /* AppDelegate.swift */; };
@@ -107,6 +108,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		013ACD272D3DF64900A38E4B /* MachoOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachoOutlineView.swift; sourceTree = "<group>"; };
 		D03AFA1D1E5F699B00C60363 /* MachODetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MachODetailsViewController.swift; sourceTree = "<group>"; };
 		D03AFA1E1E5F699B00C60363 /* MachODetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MachODetailsViewController.xib; sourceTree = "<group>"; };
 		D03CD14F1E4F903600D76CFE /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				D03CD1581E4FB12A00D76CFE /* MachODocumentOutlineViewController.xib */,
 				D03CD1571E4FB12A00D76CFE /* MachODocumentOutlineViewController.swift */,
 				D0B9F6EF1E597D9B00D0B35A /* MachODocumentDetailsViewController.swift */,
+				013ACD272D3DF64900A38E4B /* MachoOutlineView.swift */,
 				D08457BD1E5D376200B07C49 /* Details */,
 				D03CD15B1E4FB20200D76CFE /* Model */,
 				D0B9F6FA1E5AB48000D0B35A /* Utility */,
@@ -587,6 +590,7 @@
 				D0A826602028161F00855EE6 /* MKFatArch+Model.swift in Sources */,
 				D03EF6202043423400B8022C /* MKFixup+Model.swift in Sources */,
 				D03CD1561E4FAEDC00D76CFE /* MachODocumentWindowContentViewController.swift in Sources */,
+				013ACD282D3DF64900A38E4B /* MachoOutlineView.swift in Sources */,
 				D057DB7E20C3746C006CB7D3 /* MKObjCClass+Model.swift in Sources */,
 				D0B9F6FC1E5AB4B500D0B35A /* NSValueTransformer+TakeFirst.swift in Sources */,
 				D03EF6142042289000B8022C /* CollectionTypeAdapter.swift in Sources */,
@@ -644,6 +648,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = "Resources/MachOExplorer-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				PRODUCT_BUNDLE_IDENTIFIER = net.devaukz.macho.explorer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MachOExplorer-Bridging-Header.h";
@@ -658,6 +663,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = "Resources/MachOExplorer-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				PRODUCT_BUNDLE_IDENTIFIER = net.devaukz.macho.explorer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MachOExplorer-Bridging-Header.h";
