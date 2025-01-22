@@ -58,6 +58,9 @@ class MachOHexDetailViewController: MachODetailViewController
             guard self.model?.isEqual(oldValue) == false else { return }
             
             if let model = self.model as? DataModel {
+                if let obj = model as? MKSection {
+                    print(obj.name)
+                }
                 self.nodeAddress = model.address(mode: self.addressMode) as! mk_vm_address_t?
                 self.nodeData = model.data
             } else {

@@ -30,16 +30,17 @@ import MachOKit
 extension MKSection
 {
     override func adapter(forField field: MKNodeField) -> FieldAdapter? {
-        if field.name == "name" ||
-           field.name == "alignment" ||
-           field.name == "fileOffset" ||
-           field.name == "vmAddress" ||
-           field.name == "size" ||
-           field.name == "type" ||
-           field.name == "userAttributes" ||
-           field.name == "systemAttributes" {
-            return nil
-        }
+        // 不过滤字段，以便S_ZEROFILL的section可以显示信息，如遇到以下这些字段不需要显示，但是显示出来的情况，在相应的layout方法中去掉即可
+//        if field.name == "name" ||
+//           field.name == "alignment" ||
+//           field.name == "fileOffset" ||
+//           field.name == "vmAddress" ||
+//           field.name == "size" ||
+//           field.name == "type" ||
+//           field.name == "userAttributes" ||
+//           field.name == "systemAttributes" {
+//            return nil
+//        }
         
         return super.adapter(forField: field)
     }

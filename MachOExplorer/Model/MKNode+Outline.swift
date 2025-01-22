@@ -53,7 +53,12 @@ extension MKNode /* OutlineNodeModel */
         
         for field in nodeFields {
             if let fieldAdapter = self.adapter(forField: field) {
-                children += fieldAdapter.outline_nodes
+                let nodes = fieldAdapter.outline_nodes
+                if nodes.count > 0 {
+                    children += nodes
+                }
+            } else {
+                print("outline adapter not found \(field.name)")
             }
         }
         

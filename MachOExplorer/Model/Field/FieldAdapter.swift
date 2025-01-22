@@ -42,8 +42,8 @@ class FieldAdapter: NSObject
     }
     
     var typeAdapter: TypeAdapter? {
-        if let type = self.type {
-            return TypeAdapter.For(value: self.value, ofType: type, inNode: self.node)
+        if let type = self.type, let value = self.value {
+            return TypeAdapter.For(value: value, ofType: type, inNode: self.node)
         } else {
             return nil
         }
@@ -149,12 +149,14 @@ extension FieldAdapter /* DetailModel */
                     return value.detail_rows
                 }
             }
-            else if field.options.contains(.ignoreContainerContents) == false,
-                    let typeAdapter = self.typeAdapter,
-                    typeAdapter.providesSubFields {
-                return [self] + typeAdapter.detail_rows.map({ detailRowModel -> SubFieldAdapter in
-                    return SubFieldAdapter(valueProvider: detailRowModel as! NSObject, inField: self)
-                })
+            else if field.options.contains(.ignoreContainerContents) == false {
+                if let typeAdapter = self.typeAdapter {
+                    if typeAdapter.providesSubFields {
+                        return [self] + typeAdapter.detail_rows.map({ detailRowModel -> SubFieldAdapter in
+                            return SubFieldAdapter(valueProvider: detailRowModel as! NSObject, inField: self)
+                        })
+                    }
+                }
             }
             
             return [self]

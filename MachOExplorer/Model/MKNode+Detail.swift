@@ -40,6 +40,8 @@ extension MKNode /* DetailModel */
             
             if let fieldAdapter = self.adapter(forField: field) {
                 rows += fieldAdapter.detail_rows
+            } else {
+                print("detail adapter not found \(field.name)")
             }
         }
         
