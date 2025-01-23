@@ -22,22 +22,24 @@ class MachOOutlineView: NSOutlineView {
             return nil
         }
         
-        guard let dscImage = item.representedObject as? MKDSCImage else {
+        guard let macho = item.representedObject as? MKExtractable else {
             return nil
         }
         
-        return nil
-        // segment中offset的参照对象并不相同，目前还不清楚具体关系，暂不启用extract功能
+        if (!macho.extractable()) {
+            return nil
+        }
+        
         let menu = NSMenu()
         let extractItem = ImageMenuItem(title: "extract", action:#selector(extract), keyEquivalent: "")
-        extractItem.dscImage = dscImage
+        extractItem.macho = macho
         menu.addItem(extractItem)
         
         return menu
     }
     
     @objc func extract(_ sender: ImageMenuItem) {
-        guard let dscIamge = sender.dscImage else {
+        guard let macho = sender.macho else {
             return
         }
         
@@ -50,12 +52,12 @@ class MachOOutlineView: NSOutlineView {
                 return
             }
             if let dir = openPanel.url?.path() {
-                dscIamge.extract(to: dir)
+                macho.extract(to: dir)
             }
         }
     }
 }
 
 class ImageMenuItem: NSMenuItem {
-    var dscImage: MKDSCImage?
+    var macho: MKExtractable?
 }
