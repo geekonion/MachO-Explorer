@@ -29,6 +29,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-NSException * _Nullable ExceptionSafePerform(NS_NOESCAPE dispatch_block_t block);
+NSException * _Nullable ExceptionSafePerform(dispatch_block_t block);
 
 NS_ASSUME_NONNULL_END
