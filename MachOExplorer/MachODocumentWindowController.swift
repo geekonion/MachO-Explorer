@@ -56,11 +56,11 @@ class MachODocumentWindowController: NSWindowController
         self.displayModeSelector.bind(NSBindingName("selectedIndex"), to: detailController, withKeyPath: "selectedTabViewItemIndex", options: nil)
         
         let masterSplitViewItem = NSSplitViewItem(viewController: outlineController)
-        masterSplitViewItem.minimumThickness = 250
+        masterSplitViewItem.minimumThickness = 450
         splitViewController.addSplitViewItem(masterSplitViewItem)
         
         let detailSplitViewItem = NSSplitViewItem(viewController: detailController)
-        detailSplitViewItem.minimumThickness = 600
+        detailSplitViewItem.minimumThickness = 800
         splitViewController.addSplitViewItem(detailSplitViewItem)
         
         self.contentViewController = splitViewController
