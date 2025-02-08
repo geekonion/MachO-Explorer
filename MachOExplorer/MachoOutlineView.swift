@@ -56,6 +56,10 @@ class MachOOutlineView: NSOutlineView {
             }
         }
     }
+    
+//    deinit {
+//        Swift.print("\(self.className) deinit")
+//    }
 }
 
 class ImageMenuItem: NSMenuItem {

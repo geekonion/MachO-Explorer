@@ -29,5 +29,7 @@ import Cocoa
 
 class MachODocumentWindowContentViewController: NSSplitViewController
 {
-    
+//    deinit {
+//        Swift.print("\(self.className) deinit")
+//    }
 }

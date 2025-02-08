@@ -31,7 +31,8 @@ import MachOKit
 class MachODetailViewController: NSViewController
 {
     @objc dynamic var wantsDisplay: Bool = false
-    lazy var tabViewItem: NSTabViewItem = NSTabViewItem(viewController: self)
+//    lazy var tabViewItem: NSTabViewItem = NSTabViewItem(viewController: self)
+    weak var tabViewItem: NSTabViewItem?
     
     // Model //
     @objc var model: Model? = nil
@@ -69,9 +70,22 @@ class MachODetailViewController: NSViewController
         return
     }
     
+    func getTabViewItem() -> NSTabViewItem {
+        var tmpTabViewItem: NSTabViewItem
+        if tabViewItem == nil {
+            tmpTabViewItem = NSTabViewItem(viewController: self)
+            tabViewItem = tmpTabViewItem
+        } else {
+            tmpTabViewItem = tabViewItem!
+        }
+        
+        return tmpTabViewItem
+    }
+    
     deinit {
         self.unbind(ModelBinding.Name)
         self.unbind(AddressModeBinding.Name)
+//        Swift.print("\(self.className) deinit")
     }
 }
 

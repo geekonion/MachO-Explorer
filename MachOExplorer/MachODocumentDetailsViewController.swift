@@ -67,6 +67,7 @@ class MachODocumentDetailsViewController: NSTabViewController
         for viewController in self.detailViewControllers {
             viewController.removeObserver(self, forKeyPath: "wantsDisplay", context: nil)
         }
+//        Swift.print("\(self.className) deinit")
     }
 }
 
@@ -97,7 +98,7 @@ extension MachODocumentDetailsViewController
         let newValue = self.detailViewControllers.filter({ viewController -> Bool in
             return viewController.wantsDisplay
         }).map({ viewController -> NSTabViewItem in
-            return viewController.tabViewItem
+            return viewController.getTabViewItem()
         })
         
         self.tabViewItems = newValue;

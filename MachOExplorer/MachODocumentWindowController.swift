@@ -36,6 +36,7 @@ class MachODocumentWindowController: NSWindowController
     @IBOutlet var panelVisibilitySelector: NSSegmentedControl!
     
     var previousDetailSelection: String? = nil
+    weak var detailController: MachODocumentDetailsViewController?
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -51,6 +52,7 @@ class MachODocumentWindowController: NSWindowController
         let detailController = MachODocumentDetailsViewController()
         detailController.representedObject = self.document
         detailController.addObserver(self, forKeyPath: "tabViewItems", options: [.initial, .new], context: nil)
+        self.detailController = detailController
         self.displayModeSelector.bind(NSBindingName("selectedIndex"), to: detailController, withKeyPath: "selectedTabViewItemIndex", options: nil)
         
         let masterSplitViewItem = NSSplitViewItem(viewController: outlineController)
@@ -62,6 +64,12 @@ class MachODocumentWindowController: NSWindowController
         splitViewController.addSplitViewItem(detailSplitViewItem)
         
         self.contentViewController = splitViewController
+    }
+    
+    deinit {
+        self.detailController?.removeObserver(self, forKeyPath: "tabViewItems")
+        self.detailController?.unbind(NSBindingName("selectedIndex"))
+//        Swift.print("\(self.className) deinit")
     }
 }
 

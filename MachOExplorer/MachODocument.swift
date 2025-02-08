@@ -36,6 +36,10 @@ class MachODocument: NSDocument
     @objc dynamic var addressMode: MKNodeAddressType = .contextAddress
     @objc dynamic var searchString: String? = nil
     @objc dynamic var selection: Model? = nil
+    
+//    deinit {
+//        Swift.print("\(self.className) deinit")
+//    }
 }
 
 

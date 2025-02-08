@@ -29,7 +29,8 @@ import MachOKit
 
 class FieldAdapter: NSObject
 {
-    let node: MKNode
+    // 使用weak，以便关闭窗口时释放内存
+    weak var node: MKNode!
     let field: MKNodeField
     
     var type: MKNodeFieldType? {

@@ -38,6 +38,7 @@ class MachODocumentOutlineViewController: NSViewController, NSOutlineViewDelegat
     
     deinit {
         self.outlineController.removeObserver(self, forKeyPath: "selectedObjects")
+//        Swift.print("\(self.className) deinit")
     }
 }
 

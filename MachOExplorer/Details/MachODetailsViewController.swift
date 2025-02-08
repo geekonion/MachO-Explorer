@@ -40,7 +40,7 @@ class MachODetailsViewController: MachODetailViewController
         self.title = "Details"
     }
     
-    @IBOutlet var controller: NSArrayController!
+    @IBOutlet weak var controller: NSArrayController!
     
     @objc dynamic var rowData: [Row] = []
     
