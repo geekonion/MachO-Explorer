@@ -68,18 +68,28 @@ extension OptionSetTypeAdapter /* DetailModel, DetailRowModel */
         
         var rows = Array<DetailRowModel>()
         
-        for (mask, name) in (self.type as! MKNodeFieldOptionSetType).options {
-            let m: UInt64 = mask.mk_UnsignedValue(nil)
-            
-            if m == 0 && v != 0 {
-                continue
+        if let optionSet = self.type as? MKNodeFieldOptionSetType {
+            let options = optionSet.options
+            // key按大小排序，以便rows有固定的顺序
+            let keys = options.keys.sorted { key1, key2 in
+                return key1.uint32Value < key2.uint32Value
             }
-            
-            if (v & m) == m {
-                rows.append(OptionDetailRowAdapter(mask, name))
-            } else if (self.type as! MKNodeFieldOptionSetType).optionSetTraits.contains(.partialMatchingAllowed) {
-                if (v & m) != 0 {
+            for mask in keys {
+                let m: UInt64 = mask.mk_UnsignedValue(nil)
+                
+                if m == 0 && v != 0 {
+                    continue
+                }
+                
+                guard let name = options[mask] else {
+                    continue
+                }
+                if (v & m) == m {
                     rows.append(OptionDetailRowAdapter(mask, name))
+                } else if (self.type as! MKNodeFieldOptionSetType).optionSetTraits.contains(.partialMatchingAllowed) {
+                    if (v & m) != 0 {
+                        rows.append(OptionDetailRowAdapter(mask, name))
+                    }
                 }
             }
         }
