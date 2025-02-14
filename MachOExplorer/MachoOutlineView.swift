@@ -22,24 +22,30 @@ class MachOOutlineView: NSOutlineView {
             return nil
         }
         
-        guard let macho = item.representedObject as? MKExtractable else {
+        guard let extractable = item.representedObject as? MKExtractable else {
             return nil
         }
         
-        if (!macho.extractable()) {
+        if (!extractable.extractable()) {
             return nil
         }
         
         let menu = NSMenu()
-        let extractItem = ImageMenuItem(title: "extract", action:#selector(extract), keyEquivalent: "")
-        extractItem.macho = macho
+        var title: String
+        if extractable.isKind(of: MKSharedCache.self) {
+            title = "extract all images"
+        } else {
+            title = "extract"
+        }
+        let extractItem = ImageMenuItem(title: title, action:#selector(extract), keyEquivalent: "")
+        extractItem.extractable = extractable
         menu.addItem(extractItem)
         
         return menu
     }
     
     @objc func extract(_ sender: ImageMenuItem) {
-        guard let macho = sender.macho else {
+        guard let macho = sender.extractable else {
             return
         }
         
@@ -63,5 +69,5 @@ class MachOOutlineView: NSOutlineView {
 }
 
 class ImageMenuItem: NSMenuItem {
-    var macho: MKExtractable?
+    var extractable: MKExtractable?
 }
