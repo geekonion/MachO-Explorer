@@ -31,8 +31,9 @@ class MachOOutlineView: NSOutlineView {
         }
         
         let menu = NSMenu()
+        let isDSC = extractable.isKind(of: MKSharedCache.self)
         var title: String
-        if extractable.isKind(of: MKSharedCache.self) {
+        if isDSC {
             title = "extract all images"
         } else {
             title = "extract"
@@ -41,11 +42,28 @@ class MachOOutlineView: NSOutlineView {
         extractItem.extractable = extractable
         menu.addItem(extractItem)
         
+        if isDSC {
+            let subMenu = NSMenu()
+            
+            let dsc = extractable as! MKSharedCache
+            var items = [NSMenuItem]()
+            for image in dsc.sortedImages() {
+                let imageItem = ImageMenuItem(title: image.description, action:#selector(extract), keyEquivalent: "")
+                imageItem.extractable = image
+                items.append(imageItem)
+            }
+            subMenu.items = items
+            
+            let extractItem = ImageMenuItem(title: "extract image", action:#selector(extract), keyEquivalent: "")
+            menu.addItem(extractItem)
+            menu.setSubmenu(subMenu, for: extractItem)
+        }
+        
         return menu
     }
     
     @objc func extract(_ sender: ImageMenuItem) {
-        guard let macho = sender.extractable else {
+        guard let extractable = sender.extractable else {
             return
         }
         
@@ -58,7 +76,7 @@ class MachOOutlineView: NSOutlineView {
                 return
             }
             if let dir = openPanel.url?.path() {
-                macho.extract(to: dir)
+                extractable.extract(to: dir)
             }
         }
     }
